@@ -1,0 +1,55 @@
+
+import java.util.Scanner;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author baran
+ */
+public class odev3 {
+    public static void main(String[] args) {
+        int sayiKontrol = 0;
+        int ozelKarakter = 1;
+        String sifre;
+        int karakter;
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Şifrenizin uzunluğu 8 ile 13 arasında olmalıdır."
+                + "\nŞifrenizde en az 2 sayı bulunmalıdır."
+                + "\nŞifrenizde özel karakter bulunmamalıdır."
+                + "\nLütfen Şifre Giriniz: ");
+        sifre = scan.nextLine();
+        karakter = sifre.length();
+            if(karakter >= 8 && karakter <= 13){
+                for(int i = 0;i < sifre.length();i++){
+                char test = sifre.charAt(i);
+                if(Character.isDigit(test)){
+                    sayiKontrol++;
+                }
+            }
+            if(sayiKontrol >= 2){
+                for(int i = 0; i < sifre.length();i++){
+                    if (!Character.isLetter(sifre.charAt(i)) && !Character.isDigit(sifre.charAt(i))){
+                        ozelKarakter = 0;
+                    }
+                }
+                if(ozelKarakter == 1){
+                    System.out.println("Şifre Geçerli !!");
+                }
+                else{
+                    System.out.println("Şifre Geçersiz! Şifrenizde özel karakter bulunduramazsınız!");
+                }
+            }
+            else{
+                System.out.println("Şifre Geçersiz! Şifrenizde en az 2 sayı olmalıdır!");
+            }
+        }
+        else{
+            System.out.println("Şifre Geçersiz! Şifrenin uzunluğu 8 ile 13 arasında olmalıdır!");
+        }
+    }
+}
